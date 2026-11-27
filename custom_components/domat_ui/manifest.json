@@ -1,0 +1,13 @@
+{
+  "domain": "domat_ui",
+  "name": "Domat UI room units",
+  "codeowners": ["@dzavy"],
+  "config_flow": true,
+  "dependencies": ["modbus"],
+  "documentation": "https://github.com/dzavy/ha-domat-modbus",
+  "integration_type": "device",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/dzavy/ha-domat-modbus/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}

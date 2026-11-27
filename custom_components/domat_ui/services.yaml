@@ -1,0 +1,31 @@
+set_schedule:
+  fields:
+    entity_id:
+      required: true
+      selector:
+        entity:
+          integration: domat_ui
+          domain: climate
+          multiple: true
+    days:
+      required: true
+      example: "[weekdays]"
+      selector:
+        select:
+          multiple: true
+          options:
+            - mon
+            - tue
+            - wed
+            - thu
+            - fri
+            - sat
+            - sun
+            - weekdays
+            - weekend
+            - all
+    events:
+      required: true
+      example: '["06:00 day", "08:00 night", "15:00 day", "22:00 night"]'
+      selector:
+        object:

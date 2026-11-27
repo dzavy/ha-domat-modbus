@@ -1,0 +1,63 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Domat UI room unit",
+        "description": "Adds a Domat UI room unit to a hub of the Modbus integration (defined under `modbus:` in configuration.yaml).",
+        "data": {
+          "name": "Name",
+          "hub": "Modbus hub",
+          "unit": "Modbus address of the room unit"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "No answer from the room unit. Check the address, wiring and baud rate.",
+      "not_domat": "The device answered but its module ID is not a Domat UI room unit."
+    },
+    "abort": {
+      "already_configured": "This room unit is already configured.",
+      "no_hubs": "No Modbus hub found. Define one under `modbus:` in configuration.yaml (serial, rtuovertcp or tcp) and restart Home Assistant."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "scan_interval": "Polling interval (seconds)",
+          "heating_output": "Relay switched by the thermostat",
+          "hysteresis": "Hysteresis (± °C)"
+        }
+      }
+    }
+  },
+  "selector": {
+    "heating_output": {
+      "options": {
+        "none": "None (only report)",
+        "do1": "DO1",
+        "do2": "DO2"
+      }
+    }
+  },
+  "services": {
+    "set_schedule": {
+      "name": "Set weekly schedule",
+      "description": "Writes day/night/off events to the room unit's weekly schedule (stored in the unit) and enables the day/night time schedule.",
+      "fields": {
+        "entity_id": {
+          "name": "Thermostat",
+          "description": "Domat UI thermostat(s) to program."
+        },
+        "days": {
+          "name": "Days",
+          "description": "Days to program: mon..sun, weekdays, weekend or all."
+        },
+        "events": {
+          "name": "Events",
+          "description": "Up to 6 events like \"06:00 day\", \"22:00 night\" or \"23:00 off\". Other slots are cleared."
+        }
+      }
+    }
+  }
+}
